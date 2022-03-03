@@ -17,8 +17,9 @@
 </body>
 
 <script>
-  function Person(first, last, age, gender, interests) {
+  function Person(first, last, age, gender, interests) { //생성자 함수
     this.name = {
+      //속성과 메소드 정의
       'first': first,
       'last': last
     };
@@ -54,7 +55,11 @@
     };
   }
 
-  let hyewon = new Person('Hyewon','Ryu', 26,'female',['Coding','Swimming','Pole-dancing']);
+  let hyewon = new Person('Hyewon','Ryu', 26,'female',['Coding','Swimming','Pole-dancing']); //인스턴스
+
+  Person.prototype.farewell = function() {
+  alert(this.name.first + ' has left the building. Bye for now!');ㅇ
+};
 </script>
 
 </html>
