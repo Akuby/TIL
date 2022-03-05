@@ -1,12 +1,16 @@
-// 변수 유효범위(Variable Scope)
-// var은 함수 레벨의 scope, (might cause 메모리 누수)
-// let과 const는 블럭 레벨의 scope를 가진다.
+// 형 변환(Type conversion)
 
-function scope(){
-  if(true){
-    const a = 123
-    console.log(a)
-    //선언된 블럭 내부에서만 사용 가능 (=유효 범위)
-  }
+const a = 1
+const b = '1'
+
+console.log(a == b) //동등 연산자 사용 시 형 변환이 일어남
+
+// Truthy (참 같은 값)
+// true, {}, [], 1, -1, 'false', '3.14'...
+
+// Falsy (거짓 같은 값)
+// false, '', null, undefined, 0, -0, NaN
+
+if (-1) {
+  console.log(123)
 }
-scope();
