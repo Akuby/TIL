@@ -1,19 +1,12 @@
-import random from "./getRandom";
+// 변수 유효범위(Variable Scope)
+// var은 함수 레벨의 scope, (might cause 메모리 누수)
+// let과 const는 블럭 레벨의 scope를 가진다.
 
-const a = random()
-
-//swtich 문
-switch (a) { //a가 특정 값으로 떨어지는 경우엔 switch문 유용
-  case 0:
-    console.log('a is 0')
-    break
-  case 2:
-    console.log("a is 2")
-    break
-  case 4:
-    console.log('a is 4')
-    break
-  default:
-    console.log('rest...');
+function scope(){
+  if(true){
+    const a = 123
+    console.log(a)
+    //선언된 블럭 내부에서만 사용 가능 (=유효 범위)
+  }
 }
-console.log(a);
+scope();
