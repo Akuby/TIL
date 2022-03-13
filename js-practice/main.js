@@ -1,37 +1,16 @@
-// function user(first, last){
-//   this.firstName = first;
-//   this.lastName = last;
-// }
+import axios from 'axios'
 
-// user.prototype.getFullName = function () {
-//   return `${this.firstName} ${this.lastName}`
-// }
+function fetchMovies() {
+  axios
+  .get('https://omdbapi.com/?apikey=7035c60c&s=taken')
+  .then((res) => {
+    console.log(res)
+    const h1El = document.querySelector('h1')
+    const imgEl = document.querySelector('img')
+    h1El.textContent = res.data.Search[0].Title
+    imgEl.src = res.data.Search[0].Poster
+  })
 
-class Vehicle {
-  constructor(name, wheel) {
-    this.name = name;
-    this.wheel = wheel;
-  }
 }
 
-const myVehicle = new Vehicle('운송수단', 2)
-console.log(myVehicle);
-
-class Bicycle extends Vehicle {
-  // constructor(name, wheel){
-  //   super(name, wheel)
-  // }
-}
-
-const myBicycle = new Bicycle('삼천리', 2);
-console.log(myBicycle);
-
-class Car extends Vehicle {
-  constructor(name, wheel, license){
-    super(name, wheel)
-    this.license = license
-  }
-}
-
-const myCar = new Car('벤츠', 4, true)
-console.log(myCar)
+fetchMovies()
