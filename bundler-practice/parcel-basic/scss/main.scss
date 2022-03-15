@@ -3,8 +3,13 @@ $color--white : white;
 
 body{
   background-color: $color--black;
-  h1{
-    color: $color--white;
-    display: flex;
+  div{
+    border: 1px solid #111;
+    border-radius: 10px;
+    h1{
+      color: $color--white;
+      display: flex;
+    }
   }
+  
 }
