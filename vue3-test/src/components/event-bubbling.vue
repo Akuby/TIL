@@ -1,22 +1,28 @@
 <template>
 <div
-  class="parent"
-  @click="handlerA">
+  class="ansc"
+  @click.capture.stop="handlerA">
   <div
-    class="child"
-    @click="handlerB"></div>
+  class="parent"
+  @click="handlerB">
+    <div
+     class="child"
+     @click="handlerC"></div>
+  </div>
 </div>
-</template>
+</template> 
 
 <script>
 export default {
   methods : {
     handlerA() {
-      console.log('A')
+      console.log('ansc')
     },
-    handlerB(event) {
-      event.stopPropagation()
-      console.log('B')
+    handlerB() {
+      console.log('parent')
+    },
+    handlerC() {
+      console.log('child')
     }
   }
 
@@ -24,7 +30,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .parent{
+.ansc{
+  width: 300px;
+  height: 150px;
+  background-color: pink;
+  margin: 10px;
+  padding: 10px;
+    .parent{
     width: 200px;
     height: 100px;
     background-color: royalblue;
@@ -36,4 +48,5 @@ export default {
       background-color: orange;
     }
   }
+}
 </style>>
