@@ -1,36 +1,36 @@
 <template>
-  <div
-  :style="{ 'background-color' : color}"
-  :class="{ large }"
-  class="btn">
-  <slot></slot></div>
+<div class="btn"
+><slot></slot></div>
+<h1 @click="$emit('akuby')" class="btn">I'm h1</h1>
+<input type="text" v-model="msg">
 </template>
 
 <script>
 export default {
-  props:{
-    color: {
-      type:String,
-      default:'gray'
-    },
-    large : {
-      type: Boolean,
-      default : false
+  emits : [
+    'akuby',
+    'changeMsg'
+  ],
+  data(){
+    return{
+      msg:''
+    }
+  },
+  watch:{
+    msg() {
+      this.$emit('changeMsg', this.msg)
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-  .btn{
-    margin: 4px;
-    padding: 12px 24px;
-    border-radius: 4px;
-    display: inline-block;
-    cursor: pointer;
-    &.large{
-      font-size: 30px;
-      padding : 15px 27px
-    }
-  }
+.btn{
+  display: inline-block;
+  background-color: rgb(248, 248, 167);
+  margin: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
 </style>

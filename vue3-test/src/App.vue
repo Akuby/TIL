@@ -1,33 +1,28 @@
 <template>
-  <h1
-  :style="[myStyle, backgroundStyle]" 
-  @click="changeStyle">
-  Hello?
-  </h1>
+  <MyBtn
+  @akuby="log"
+  @change-msg="logMsg"
+  >Banana</MyBtn>
+
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-      myStyle : {
-        color : 'pink',
-        'font-size' : '30px'
+  import MyBtn from '~/components/MyBtn'
+  export default {
+    components : {
+      MyBtn
+    },
+    methods:{
+      log(){
+        console.log('Click!!')
       },
-      backgroundStyle : {
-        'background-color' : 'black'
+      logMsg(msg){
+        console.log(msg)
       }
     }
-  },
-  methods:{
-    changeStyle() {
-      this.myStyle['color'] = 'red',
-      this.backgroundStyle['background-color'] = 'orange'
-    }
   }
-}
 </script>
 
-<style>
+<style lang="scss" scoped>
 
-</style>
+</style>>
