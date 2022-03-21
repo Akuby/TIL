@@ -1,32 +1,45 @@
 <template>
-  <button @click="push">click!!</button>
-  <h1>App : {{ message }}</h1>
-  <Parent />
+  <h1 @click="increase">
+    {{ count }} / {{ doubleCount }}
+  </h1>
+  <h1 @click="changeMessage">
+    {{ message }} / {{ reversedMessage }}
+  </h1>
 </template>
 
 <script>
-  import Parent from "~/components/Parent"
-  import { computed } from 'vue'
-
   export default {
-    components : {
-      Parent
-    },
-    data(){
-      return {
-        message : "Hello World!"
+    data() {
+      return{
+        count : 0,
+        message : 'Hello World!'
       }
     },
-    provide() {
-      return {
-        msg : computed(()=>{
-          return this.message
-        })
+    computed:{
+      doubleCount() {
+        return this.count * 2
+      },
+      reversedMessage() {
+        return this.message.split('').reverse().join('')
       }
+    },
+    watch:{
+      message(newMessage) {
+        console.log(newMessage)
+      }
+    },
+    created(){
+      console.log(this.message)
+    },
+    mounted(){
+      console.log(this.count)
     },
     methods : {
-      push(){
-        this.message = 'Good!'
+      increase() {
+        this.count += 1
+      },
+      changeMessage() {
+        this.message = 'Good?!'
       }
     }
   }
