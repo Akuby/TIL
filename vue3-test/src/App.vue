@@ -1,23 +1,32 @@
 <template>
-  <MyBtn
-  @akuby="log"
-  @change-msg="logMsg"
-  >Banana</MyBtn>
-
+  <button @click="push">click!!</button>
+  <h1>App : {{ message }}</h1>
+  <Parent />
 </template>
 
 <script>
-  import MyBtn from '~/components/MyBtn'
+  import Parent from "~/components/Parent"
+  import { computed } from 'vue'
+
   export default {
     components : {
-      MyBtn
+      Parent
     },
-    methods:{
-      log(){
-        console.log('Click!!')
-      },
-      logMsg(msg){
-        console.log(msg)
+    data(){
+      return {
+        message : "Hello World!"
+      }
+    },
+    provide() {
+      return {
+        msg : computed(()=>{
+          return this.message
+        })
+      }
+    },
+    methods : {
+      push(){
+        this.message = 'Good!'
       }
     }
   }
